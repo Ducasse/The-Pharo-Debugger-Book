@@ -12,11 +12,11 @@ Basic debug points can also be used but they do nothing unless we add **behavior
 
 It is possible to double-click on the left bar in the Calypso browser to set a basic breakpoint on the corresponding line (Figure *@fig:double-click-editor@*).
 
-![Activating basic breakpoint by double-clicking the left bar in the method editor.](./graphics/debug-points-method-left-bar.png width=37&label=fig:double-click-editor)
+![Activating basic breakpoint by double-clicking the left bar in the method editor.%width=37&label=fig:double-click-editor](./graphics/debug-points-method-left-bar.png)
 
 Moreover, in the Calypso browser, it is also possible to right-click on a piece of code to set a debug point on the corresponding instruction (Figure *@fig:editor-context-menu@*).
 
-![Installing basic debug points from the Calypso browser in the method editor.](./graphics/debug-points-method-editor-context-menu.png width=70&label=fig:editor-context-menu)
+![Installing basic debug points from the Calypso browser in the method editor.%width=70&label=fig:editor-context-menu](./graphics/debug-points-method-editor-context-menu.png)
 
 #### Behaviors of debug points
 
@@ -57,7 +57,7 @@ Debug points can be installed on different types of targets:
 
   **API:**
 
-  + `DebugPointManager installNew: aDebugPointClass inClass: aClass onVariableAccessNamed: aSlotNameSymbol`: instanciates a debug point class, configured with no behavior, and installs it on the instance variable, whose name is given as argument, in a class hierarchy. The debug point is reached at each reading or writing of this variable.
+  + `DebugPointManager installNew: aDebugPointClass inClass: aClass onVariableAccessNamed: aSlotNameSymbol`: instantiates a debug point class, configured with no behavior, and installs it on the instance variable, whose name is given as argument, in a class hierarchy. The debug point is reached at each reading or writing of this variable.
 
   + `DebugPointManager installNew: aDebugPointClass inClass: aClass onVariableAccessNamed: aSlotNameSymbol withBehaviors: aListOfBehaviorClasses`: instanciates a debug point class, configured with the list of behavior classes, and installs it on the instance variable whose name is given as argument, in a class hierarchy. The debug point is reached at each reading or writing of this variable.
 
