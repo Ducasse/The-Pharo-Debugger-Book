@@ -51,7 +51,7 @@ Debug points can be installed on different types of targets:
 
 - a _variable_, which can be targeted by selecting a variable in the variable view in the Calypso browser (Figure *@fig:calypso-variable-view@*).
 
-  ![Selecting a variable in the variable view in the Calypso browser, to set a debug point on a variable.](./graphics/debug-points-variable-view-context-menu.png width=75&label=fig:calypso-variable-view)
+  ![Selecting a variable in the variable view in the Calypso browser, to set a debug point on a variable. % width=75&label=fig:calypso-variable-view](./graphics/debug-points-variable-view-context-menu.png)
 
   In this case, the debug point is reached each time the targeted variable is read or/and written, according to the debug point's configuration.
 
