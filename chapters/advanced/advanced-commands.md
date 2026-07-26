@@ -2,7 +2,7 @@
 
 In this chapter, we describe the advanced debugging commands (referred as 2 in Figure *@fig:advanced-step-toolbar@*) provided by the "Advanced step" menu (referred as 1 in Figure *@fig:advanced-step-toolbar@*) in the graphical user interface:
 
-![The debugger advanced step toolbar.](graphics/advanced-step-toolbar.png width=70&label=fig:advanced-step-toolbar)
+![The debugger advanced step toolbar.% width=70&label=fig:advanced-step-toolbar](graphics/advanced-step-toolbar.png)
 
 
 These commands allow to perform steps with bigger granularity than the basic ones, as it may be tedious to debug a program with basic steps.
@@ -12,78 +12,71 @@ Some of these commands are experimental features to skip the execution of some p
 
 The debugging commands offered by the StDebugger in the "Advanced step" toolbar are the following ones:
 
-* **Next instance creation:** Steps the execution until a class is instanciated in the current context.
+**Next instance creation:** Steps the execution until a class is instanciated in the current context.
 
     The execution is stopped and an error message is displayed when one of these situations happen:
+- no class has been instanciated within 1000 steps,
+- an unhandled exception has been raised,
+- the current context has returned to its sender.
 
-    - no class has been instanciated within 1000 steps,
-
-    - an unhandled exception has been raised,
-
-    - the current context has returned to its sender.
-
-    **Example:** 
+**Example:** 
     After clicking the _Next instance creation_ button (referred as 1 in Figure *@fig:before-step-creation@*) from the first assignment of `a` (code location referred as 2 in Figure *@fig:before-step-creation@*),
 
-    ![Before stepping to next instance creation.](graphics/before-step-next-creation.png width=70&label=fig:before-step-creation)
+![Before stepping to next instance creation.%width=70&label=fig:before-step-creation](graphics/before-step-next-creation.png )
     
 
-    we get to the next instruction that creates an instance (`#basicNew`), called inside `SindarinDebugger class>>#debug:` (Figure *@fig:after-step-creation@*).
+We get to the next instruction that creates an instance (`#basicNew`), called inside `SindarinDebugger class>>#debug:` (Figure *@fig:after-step-creation@*).
 
-    ![After stepping to next instance creation.](graphics/after-step-next-creation.png width=90&label=fig:after-step-creation)
+ ![After stepping to next instance creation.% width=90&label=fig:after-step-creation](graphics/after-step-next-creation.png)
 
-* **Next call in receiver:** Steps the execution until a message is sent to the current context's receiver.
+**Next call in receiver:** Steps the execution until a message is sent to the current context's receiver.
 
-    The execution is stopped and an error message is displayed when one of these situations happen:
+The execution is stopped and an error message is displayed when one of these situations happen:
 
-    - no message has been sent to the current context's receiver within 1000 steps,
+- no message has been sent to the current context's receiver within 1000 steps,
+- an unhandled exception has been raised,
+- the current context has returned to its sender.
 
-    - an unhandled exception has been raised,
-
-    - the current context has returned to its sender.
-
-    **Example:**
+**Example:**
     After clicking the _Next call in receiver_ button (referred as 1 in Figure *@fig:before-next-receiver@*) from the instruction `oc add: 1` (code location referred as 2 in Figure *@fig:before-next-receiver@*),
 
-    ![Before stepping to next call in receiver.](graphics/before-next-call-receiver.png width=90&label=fig:before-next-receiver)
+![Before stepping to next call in receiver.% width=90&label=fig:before-next-receiver](graphics/before-next-call-receiver.png)
 
-    we get to the next message send `#add:` to the object `oc` with `2` as argument.
-    We don't stop on the message `#beginsWithAnyOf:` sent to the object `la` because `la` is a different object from `oc` (Figure *@fig:after-next-receiver@*).
+We get to the next message send `#add:` to the object `oc` with `2` as argument.
+We don't stop on the message `#beginsWithAnyOf:` sent to the object `la` because `la` is a different object from `oc` (Figure *@fig:after-next-receiver@*).
 
-    ![After stepping to next call in receiver.](graphics/after-next-call-receiver.png width=90&label=fig:after-next-receiver)
+![After stepping to next call in receiver.%width=90&label=fig:after-next-receiver](graphics/after-next-call-receiver.png )
 
 * **Next call in class:** Steps the execution until a message is sent to any instance of the class of the current context's receiver.
 
-    The execution is stopped and an error message is displayed when one of these situations happen:
+The execution is stopped and an error message is displayed when one of these situations happen:
 
-    - no message has been sent to any instance of the current context's receiver's class within 1000 steps,
+- no message has been sent to any instance of the current context's receiver's class within 1000 steps,
+- an unhandled exception has been raised,
+- the current context has returned to its sender.
 
-    - an unhandled exception has been raised,
-
-    - the current context has returned to its sender.
-
-    **Example:**
+**Example:**
     After clicking the _Next call in receiver_ button (referred as 1 in Figure *@fig:before-next-class@*) from the instruction `oc add: 1` (code location referred as 2 in the Figure *@fig:before-next-class@*),
 
-    ![Before stepping to next call in class.](graphics/before-next-call-class.png width=90&label=fig:before-next-class)
+![Before stepping to next call in class.](graphics/before-next-call-class.png width=90&label=fig:before-next-class)
 
     We stop on the message `#beginsWithAnyOf:` sent to the object `la` because `la` is an instance from the same class as `oc` (Figure *@fig:after-next-class@*).
 
-    ![After stepping to next call in class.](graphics/after-next-call-class.png width=90&label=fig:after-next-class)
+![After stepping to next call in class.](graphics/after-next-call-class.png width=90&label=fig:after-next-class)
 
 
 * **To return:** Steps the execution until the current context is about to return, whether this is via a normal return, a non-local return or an implicit return, or until an unhandled exception is raised.
 
-    This is particularly useful if you don't know which execution path is taken to return.
+This is particularly useful if you don't know which execution path is taken to return.
 
-    **Example:**
+**Example:**
     After clicking the _To return_ button (referred as 1 in Figure *@fig:before-return@*) from the bloc creation `[ ^ 42]` (code location referred as 2 in Figure *@fig:before-return@*),
 
-    ![Before stepping to return.](graphics/before-step-to-return.png width=90&label=fig:before-return)
+![Before stepping to return.](graphics/before-step-to-return.png width=90&label=fig:before-return)
 
     We stop inside the block because the block evaluation is going to perform a non-local return `^ 42` (Figure *@fig:after-return@*).
 
-    ![After stepping to return.](graphics/after-step-to-return.png width=90&label=fig:after-return)
+![After stepping to return.](graphics/after-step-to-return.png width=90&label=fig:after-return)
    
 
 * **To method entry:** Steps the execution until a method is called, to stop at the start of its execution.
