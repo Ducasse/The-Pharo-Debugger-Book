@@ -58,11 +58,11 @@ The execution is stopped and an error message is displayed when one of these sit
 **Example:**
     After clicking the _Next call in receiver_ button (referred as 1 in Figure *@fig:before-next-class@*) from the instruction `oc add: 1` (code location referred as 2 in the Figure *@fig:before-next-class@*),
 
-![Before stepping to next call in class.](graphics/before-next-call-class.png width=90&label=fig:before-next-class)
+![Before stepping to next call in class.%width=90&label=fig:before-next-class](graphics/before-next-call-class.png )
 
     We stop on the message `#beginsWithAnyOf:` sent to the object `la` because `la` is an instance from the same class as `oc` (Figure *@fig:after-next-class@*).
 
-![After stepping to next call in class.](graphics/after-next-call-class.png width=90&label=fig:after-next-class)
+![After stepping to next call in class.%width=90&label=fig:after-next-class](graphics/after-next-call-class.png )
 
 
 * **To return:** Steps the execution until the current context is about to return, whether this is via a normal return, a non-local return or an implicit return, or until an unhandled exception is raised.
@@ -72,11 +72,11 @@ This is particularly useful if you don't know which execution path is taken to r
 **Example:**
     After clicking the _To return_ button (referred as 1 in Figure *@fig:before-return@*) from the bloc creation `[ ^ 42]` (code location referred as 2 in Figure *@fig:before-return@*),
 
-![Before stepping to return.](graphics/before-step-to-return.png width=90&label=fig:before-return)
+![Before stepping to return.%width=90&label=fig:before-return](graphics/before-step-to-return.png )
 
     We stop inside the block because the block evaluation is going to perform a non-local return `^ 42` (Figure *@fig:after-return@*).
 
-![After stepping to return.](graphics/after-step-to-return.png width=90&label=fig:after-return)
+![After stepping to return.% width=90&label=fig:after-return](graphics/after-step-to-return.png)
    
 
 * **To method entry:** Steps the execution until a method is called, to stop at the start of its execution.
@@ -84,11 +84,11 @@ This is particularly useful if you don't know which execution path is taken to r
     **Example:**
     After clicking the _To method entry_ button (referred as 1 in Figure *@fig:before-method@*) from the start of the execution of the method `testBeginsWithAnyOf2` (code location referred as 2 in Figure *@fig:before-method@*),
 
-    ![Before stepping to method entry.](graphics/before-step-method-entry.png width=90&label=fig:before-method)
+    ![Before stepping to method entry.%width=90&label=fig:before-method](graphics/before-step-method-entry.png )
 
     We stop at the beginning of the method `new` because this is the next message that is sent during the execution (Figure *@fig:after-method@*).
 
-    ![After stepping to method entry.](graphics/after-step-method-entry.png width=90&label=fig:after-method)
+    ![After stepping to method entry.% width=90&label=fig:after-method](graphics/after-step-method-entry.png)
 
 * **Skip:** Skips an instruction without executing it. 
 
@@ -110,11 +110,11 @@ This is particularly useful if you don't know which execution path is taken to r
     **Example:**
     After clicking the _Skip_ button (referred as 1 in Figure *@fig:before-skip@*) when the message `unkownMessage` is going to be sent to `1` (referred as 2 in Figure *@fig:before-skip@*),
 
-    ![Before skipping a message send.](graphics/before-skip.png width=70&label=fig:before-skip)
+    ![Before skipping a message send.%width=70&label=fig:before-skip](graphics/before-skip.png )
 
     Instead of sending the message that would raise a `MessageNotUnderstood` exception, it simulates as if the message send had returned `1` and stops on the expression `+ 42` (Figure *@fig:after-skip@*)
 
-    ![After skipping a message send.](graphics/after-skip.png width=70&label=fig:after-skip)
+    ![After skipping a message send. % width=70&label=fig:after-skip](graphics/after-skip.png)
     
     So, stepping this expression will return `43`, as `1 + 42` is evaluated.
 
@@ -129,26 +129,23 @@ This is particularly useful if you don't know which execution path is taken to r
     **Example:**
     After setting the caret to the instruction `a + 2` (code location referred as 3 in Figure *@fig:before-skip-caret@*) and clicking the _Skip up to_ button (referred as 1 in *@fig:before-skip-caret@*), from the block creation `[ a := a + 1]` (code location referred as 2 in Figure *@fig:before-skip-caret@*),
 
-    ![Before skipping up to caret.](graphics/before-skip-up-to.png width=70&label=fig:before-skip-caret)
+![Before skipping up to caret.%width=70&label=fig:before-skip-caret](graphics/before-skip-up-to.png)
 
     The block creation is skipped, which returns `nil` instead, and the assignment of the variable `block` is also skipped. As a result, the variable `block` is still `nil` after skipping the code (Figure *@fig:after-skip-caret@*).
 
-    ![After skipping up to caret.](graphics/after-skip-up-to.png width=70&label=fig:after-skip-caret)
+![After skipping up to caret.%width=70&label=fig:after-skip-caret)](graphics/after-skip-up-to.png 
 
-* **JumpToCaret:** jumps to the instruction under caret that can be anywhere in the home context, without changing the state of the program.
+**JumpToCaret:** jumps to the instruction under caret that can be anywhere in the home context, without changing the state of the program.
 
-    This command is similar to the "Skip up to" command except that it is much more powerful as it can be used:
+This command is similar to the "Skip up to" command except that it is much more powerful as it can be used:
+- to move back and forth in the top context,
+- to enter blocks from its home context,
+- it can be used to exit blocks to go to an instruction within the home context
 
-    - to move back and forth in the top context,
-
-    - to enter blocks from its home context,
-
-    - it can be used to exit blocks to go to an instruction within the home context
-
-    **Example:**
+**Example:**
     After setting the caret to the instruction `a + 1` inside the embedded block (code location referred as 3 in Figure *@fig:before-jump@*) and clicking the _Jump to caret_ button (referred as 1 in Figure *@fig:before-jump@*), from the instruction `a * 42`located further in the method (referred as 2 in Figure *@fig:before-jump@*),
 
-    ![Before jumping to caret.](graphics/before-jump-to-caret.png width=70&label=fig:before-jump)
+    ![Before jumping to caret.%width=70&label=fig:before-jump](graphics/before-jump-to-caret.png )
 
     We have now entered the embeddded block and stopped on the target instruction. The state of the program has not changed, so the value of `a` is still `3` (Figure *@fig:after-jump@*).
 
